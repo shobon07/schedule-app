@@ -1,4 +1,4 @@
-import DailyScheduler from './components/DailyScheduler';
+import DailyScheduler from './components/scheduleGenerator/DailyScheduler';
 
 function App() {
   return <DailyScheduler />;

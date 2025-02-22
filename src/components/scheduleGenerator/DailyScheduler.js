@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Clock, Plus, Save, Briefcase } from 'lucide-react';
-import { generateSchedule } from '../services/scheduleGenerator';
+import { generateSchedule } from '../../services/scheduleGenerator';
 
 const DailyScheduler = () => {
   const [timeRange, setTimeRange] = useState({ start: '09:00', end: '22:00' }); //活動時間
