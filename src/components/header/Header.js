@@ -13,13 +13,13 @@ const Header = () => {
             </h1>
           <div className="flex gap-4">
             <Link
-              to="/"
+              to="/schedule"
               className="text-gray-300 hover:text-gray-400"
             >
               スケジュール生成
             </Link>
             <Link
-              to="/tasks"
+              to="/todo"
               className="text-gray-300 hover:text-gray-400"
             >
               やりたいことリスト

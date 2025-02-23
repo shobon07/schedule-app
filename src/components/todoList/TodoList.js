@@ -1,5 +1,5 @@
-// src/components/TaskList/TaskList.js
-const TaskList = () => {
+// src/components/todoList/TodoList.js
+const TodoList = () => {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <div className="mb-6">
@@ -14,4 +14,4 @@ const TaskList = () => {
   );
 };
 
-export default TaskList;
+export default TodoList;
