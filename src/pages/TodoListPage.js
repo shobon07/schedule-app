@@ -1,11 +1,17 @@
-// src/pages/TodoListPage.js
-import TodoList from '../components/todoList/TodoList';
-
+import React, { useState } from "react";
+import TodoListForm from "../components/todoList/TodoListForm";
+import TodoListTable from "../components/todoList/TodoListTable";
 const TodoListPage = () => {
+  const [todoList, setTodoList] = useState([]);
+
+  const handleAddTask = (newTask) => {
+    setTodoList([...todoList, newTask]);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h2 className="text-2xl font-bold mb-6">やりたいことリスト</h2>
-      <TodoList />
+    <div>
+      <TodoListForm onAddTask={handleAddTask} />
+      <TodoListTable todoList={todoList} />
     </div>
   );
 };

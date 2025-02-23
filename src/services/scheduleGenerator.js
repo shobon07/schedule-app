@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-console.log('API Key:', process.env.REACT_APP_GEMINI_API_KEY);
+console.log("API Key:", process.env.REACT_APP_GEMINI_API_KEY);
 
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 
@@ -12,10 +12,10 @@ export const generateSchedule = async (fixedEvents, tasks, timeRange) => {
 活動可能時間: ${timeRange.start}から${timeRange.end}
 
 固定スケジュール:
-${fixedEvents.map(event => `- ${event.title}: ${event.start}-${event.end}`).join('\n')}
+${fixedEvents.map(event => `- ${event.title}: ${event.start}-${event.end}`).join("\n")}
 
 タスク一覧:
-${tasks.map(task => `- ${task.title}: ${task.duration}分`).join('\n')}
+${tasks.map(task => `- ${task.title}: ${task.duration}分`).join("\n")}
 
 スケジュール作成の原則:
 1. 午前中（特に9:00-12:00）は集中力が必要なタスクを優先的に配置
@@ -48,7 +48,7 @@ JSONのみを出力してください。マークダウン記法は使用しな�
 
 try {
   // デバッグ用：送信するプロンプトの確認
-  console.log('Sending prompt to Gemini:', prompt);
+  console.log("Sending prompt to Gemini:", prompt);
 
   // Geminiモデルの取得と生成
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -57,23 +57,23 @@ try {
   let text = response.text();
 
   // マークダウン記法を削除
-  text = text.replace(/```json\n/, '').replace(/```/, '');
+  text = text.replace(/```json\n/, "").replace(/```/, "");
 
   // デバッグ用：APIからのレスポンスを確認
-  console.log('Raw Gemini response:', text);
+  console.log("Raw Gemini response:", text);
 
   try {
     // JSONとしてパース
     const schedule = JSON.parse(text.trim());
-    console.log('Parsed schedule:', schedule);
+    console.log("Parsed schedule:", schedule);
     return schedule;
   } catch (parseError) {
-    console.error('JSON parse error:', parseError);
-    throw new Error('生成されたスケジュールの形式が不正です');
+    console.error("JSON parse error:", parseError);
+    throw new Error("生成されたスケジュールの形式が不正です");
   }
 
 } catch (error) {
-  console.error('Gemini API Error:', error);
-  throw new Error('スケジュールの生成に失敗しました');
+  console.error("Gemini API Error:", error);
+  throw new Error("スケジュールの生成に失敗しました");
 }
 };

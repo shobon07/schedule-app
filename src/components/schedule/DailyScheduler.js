@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { Clock, Plus, Save, Briefcase } from 'lucide-react';
-import { generateSchedule } from '../../services/scheduleGenerator';
+import React, { useState } from "react";
+import { Clock, Plus, Save, Briefcase } from "lucide-react";
+import { generateSchedule } from "../../services/scheduleGenerator";
 
 const DailyScheduler = () => {
-  const [timeRange, setTimeRange] = useState({ start: '09:00', end: '22:00' }); //活動時間
+  const [timeRange, setTimeRange] = useState({ start: "09:00", end: "22:00" }); //活動時間
   const [tasks, setTasks] = useState([]);                                       //作業内容
   const [fixedEvents, setFixedEvents] = useState([]); // 固定スケジュール用
-  const [newTask, setNewTask] = useState({ title: '', duration: 30 });
+  const [newTask, setNewTask] = useState({ title: "", duration: 30 });
   const [generatedSchedule, setGeneratedSchedule] = useState(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [newFixedEvent, setNewFixedEvent] = useState({
-    title: '',
-    start: '',
-    end: '',
-    type: 'work' // work, class, other など
+    title: "",
+    start: "",
+    end: "",
+    type: "work" // work, class, other など
   });
   const handleGenerateSchedule = async () => {
     //時間が何も設定されていない時のアラーム
     if (tasks.length === 0 && fixedEvents.length === 0) {
-      alert('タスクまたは固定スケジュールを追加してください');
+      alert("タスクまたは固定スケジュールを追加してください");
       return;
     }
 
@@ -31,15 +31,15 @@ const DailyScheduler = () => {
       };
 
       // データをコンソールに出力して確認
-      console.log('生成するスケジュールのデータ:', scheduleData);
+      console.log("生成するスケジュールのデータ:", scheduleData);
 
       // 仮のスケジュールデータ（あとでAI生成に置き換え）
       const result = await generateSchedule(fixedEvents, tasks, timeRange);
       setGeneratedSchedule(result);
 
     } catch (error) {
-      console.error('スケジュール生成エラー:', error);
-      alert('スケジュールの生成に失敗しました');
+      console.error("スケジュール生成エラー:", error);
+      alert("スケジュールの生成に失敗しました");
     } finally {
       setIsGenerating(false);
     }
@@ -50,10 +50,10 @@ const DailyScheduler = () => {
     if (newFixedEvent.title && newFixedEvent.start && newFixedEvent.end) {
       setFixedEvents([...fixedEvents, newFixedEvent]);
       setNewFixedEvent({
-        title: '',
-        start: '',
-        end: '',
-        type: 'work'
+        title: "",
+        start: "",
+        end: "",
+        type: "work"
       });
     }
   };
@@ -62,7 +62,7 @@ const DailyScheduler = () => {
   const addTask = () => {
     if (newTask.title) {
       setTasks([...tasks, newTask]);
-      setNewTask({ title: '', duration: 30 });
+      setNewTask({ title: "", duration: 30 });
     }
   };
 
@@ -176,7 +176,7 @@ const DailyScheduler = () => {
                   <div>
                     <span className="font-medium">{event.title}</span>
                     <span className="ml-2 text-sm text-gray-500">
-                      ({event.type === 'work' ? 'バイト' : event.type === 'class' ? '授業' : 'その他'})
+                      ({event.type === "work" ? "バイト" : event.type === "class" ? "授業" : "その他"})
                     </span>
                   </div>
                   <div className="flex items-center gap-4">
@@ -259,7 +259,7 @@ const DailyScheduler = () => {
         <button
           onClick={handleGenerateSchedule}
           disabled={isGenerating}
-          className={`w-full ${isGenerating ? 'bg-gray-400' : 'bg-green-500 hover:bg-green-600'
+          className={`w-full ${isGenerating ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
             } text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2`}
         >
           {isGenerating ? (
@@ -282,11 +282,11 @@ const DailyScheduler = () => {
               {generatedSchedule.schedule.map((item, index) => (
                 <div
                   key={index}
-                  className={`p-3 rounded ${item.type === 'fixed'
-                    ? 'bg-blue-100'
-                    : item.type === 'break'
-                      ? 'bg-gray-100'
-                      : 'bg-green-100'
+                  className={`p-3 rounded ${item.type === "fixed"
+                    ? "bg-blue-100"
+                    : item.type === "break"
+                      ? "bg-gray-100"
+                      : "bg-green-100"
                     }`}
                 >
                   <div className="flex justify-between items-center">
@@ -297,7 +297,7 @@ const DailyScheduler = () => {
                       </span>
                     </div>
                     <span className="text-sm text-gray-500">
-                      {item.type === 'fixed' ? '固定' : item.type === 'break' ? '休憩' : 'タスク'}
+                      {item.type === "fixed" ? "固定" : item.type === "break" ? "休憩" : "タスク"}
                     </span>
                   </div>
                 </div>

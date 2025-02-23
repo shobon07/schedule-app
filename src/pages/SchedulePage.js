@@ -1,5 +1,5 @@
 // src/pages/SchedulePage.js
-import DailyScheduler from '../components/scheduleGenerator/DailyScheduler';
+import DailyScheduler from "../components/schedule/DailyScheduler";
 
 const SchedulePage = () => {
   return (

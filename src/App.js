@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/header/Header';
-import SchedulePage from './pages/SchedulePage';
-import TodoListPage from './pages/TodoListPage';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/header/Header";
+import SchedulePage from "./pages/SchedulePage";
+import TodoListPage from "./pages/TodoListPage";
 
 function App() {
   return (
