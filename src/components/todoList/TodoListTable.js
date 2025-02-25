@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { SortAsc, Star } from "lucide-react";
+import { SortAsc, Star, Trash2 } from "lucide-react";
 
 const renderPriorityStars = (priority) => {
   const starCount = priority === "☆" ? 1 :
@@ -19,7 +19,7 @@ const renderPriorityStars = (priority) => {
   );
 };
 
-const TodoListTable = ({ todoList }) => {
+const TodoListTable = ({ todoList, onDeleteTask }) => {
   const [sortType, setSortType] = useState("");
 
   const sortedTodoList = useMemo(() => {
@@ -79,6 +79,12 @@ const TodoListTable = ({ todoList }) => {
                   {renderPriorityStars(task.priority)}
                 </div>
               </div>
+              <button
+                  onClick={() => onDeleteTask(task.id)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <Trash2 size={16}/>
+                </button>
             </li>
           ))}
         </ul>

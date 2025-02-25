@@ -9,6 +9,7 @@ function App() {
       <div className="min-h-screen bg-gray-100">
         <Header />
         <Routes>
+          <Route path="/" element={<SchedulePage />} />
           <Route path="/schedule" element={<SchedulePage />} />
           <Route path="/todo" element={<TodoListPage />} />
         </Routes>
