@@ -1,8 +1,10 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { loadTasks } from "./todoLocalStorage";
 
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 
 export const generateSchedule = async (fixedEvents, tasks, timeRange) => {
+  const todoList = loadTasks();
   const prompt = `
 1日のスケジュールを最適化してください。
 以下の原則に従ってスケジュールを作成し、JSONのみを出力してください。
@@ -14,6 +16,11 @@ ${fixedEvents.map(event => `- ${event.title}: ${event.start}-${event.end}`).join
 
 タスク一覧:
 ${tasks.map(task => `- ${task.title}: ${task.duration}分`).join("\n")}
+
+もし入れられるのであればやることリストの内容も追加してください。
+
+やることリスト:
+${todoList.map(todo => `- ${todo.name}: ${todo.duration}分`).join("\n")}
 
 スケジュール作成の原則:
 1. 午前中（特に9:00-12:00）は集中力が必要なタスクを優先的に配置
