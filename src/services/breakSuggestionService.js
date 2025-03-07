@@ -53,7 +53,7 @@ export const fetchBreakSuggestions = async () => {
       "suggestions": [
         {
           "id": "b1",
-          "task": "活動名",
+          "name": "活動名",
           "duration": 所要時間（分）,
           "priority": "優先度（★〜★★★）",
           "benefit": "この活動がもたらす主な効果（学生生活に関連づけて）",
@@ -103,7 +103,7 @@ export const fetchBreakSuggestions = async () => {
     return [
       {
         id: "b1",
-        task: "miss",
+        name: "miss",
         duration: 20,
         priority: "★★",
         benefit: "気分転換と軽い運動効果",
@@ -111,7 +111,7 @@ export const fetchBreakSuggestions = async () => {
       },
       {
         id: "b2",
-        task: "miss",
+        name: "miss",
         duration: 15,
         priority: "★★★",
         benefit: "体のこりをほぐし、心をリフレッシュ",
@@ -119,7 +119,7 @@ export const fetchBreakSuggestions = async () => {
       },
       {
         id: "b3",
-        task: "miss",
+        name: "miss",
         duration: 30,
         priority: "★",
         benefit: "思考の整理と心の安定",

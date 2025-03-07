@@ -33,7 +33,7 @@ const BreakSuggestionCard = ({ onAddTask }) => {
       // todoリストに追加するためのフォーマットに変換
       const newTask = {
         id: generateId(),
-        task: selectedSuggestion.task,
+        name: selectedSuggestion.name,
         duration: selectedSuggestion.duration,
         priority: selectedSuggestion.priority
       };
