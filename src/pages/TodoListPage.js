@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TodoListForm from "../components/todoList/TodoListForm";
 import TodoListTable from "../components/todoList/TodoListTable";
+import BreakSuggestionCard from "../components/breakSuggestion/BreakSuggestionCard";
 import { saveTasks, loadTasks, deleteTask } from "../services/todoLocalStorage"
 
 const TodoListPage = () => {
@@ -23,7 +24,8 @@ const TodoListPage = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <BreakSuggestionCard/>
       <TodoListForm onAddTask={handleAddTask} />
       <TodoListTable
         todoList={todoList}
