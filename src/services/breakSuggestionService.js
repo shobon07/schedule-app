@@ -1,11 +1,20 @@
-// src/services/breakSuggestionService.js
+/**
+ * 息抜き提案サービス
+ * Gemini APIを使用して息抜きアイデアを取得する機能を提供
+ *
+ * @module breakSuggestionService
+ */
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getHistoryForPrompt } from "./breakHistoryService";
 
 // GoogleGenerativeAI インスタンスの初期化
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 
-// 息抜きアイデアを取得する
+/**
+ * 息抜きアイデアを取得する
+ * @returns {Promise<Array>} 息抜き提案の配列
+ */
 export const fetchBreakSuggestions = async () => {
   try {
     // 過去の提案履歴を取得
@@ -103,33 +112,36 @@ export const fetchBreakSuggestions = async () => {
     return [
       {
         id: "b1",
-        name: "miss",
-        duration: 20,
+        name: "5分間の瞑想",
+        duration: 5,
         priority: "★★",
-        benefit: "気分転換と軽い運動効果",
-        category: "身体活動"
-      },
-      {
-        id: "b2",
-        name: "miss",
-        duration: 15,
-        priority: "★★★",
-        benefit: "体のこりをほぐし、心をリフレッシュ",
+        benefit: "集中力の回復とストレス軽減",
         category: "リラクゼーション"
       },
       {
+        id: "b2",
+        name: "ストレッチ",
+        duration: 10,
+        priority: "★★★",
+        benefit: "体のこりをほぐし、心をリフレッシュ",
+        category: "身体活動"
+      },
+      {
         id: "b3",
-        name: "miss",
-        duration: 30,
+        name: "散歩",
+        duration: 20,
         priority: "★",
-        benefit: "思考の整理と心の安定",
-        category: "創造的活動"
+        benefit: "気分転換と軽い運動効果",
+        category: "身体活動"
       }
     ];
   }
 };
 
-// ランダムなIDを生成する補助関数
+/**
+ * ユニークIDを生成する
+ * @returns {string} 生成されたID
+ */
 export const generateId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 };
